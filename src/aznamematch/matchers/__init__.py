@@ -7,7 +7,12 @@ imported lazily by name via :func:`load_optional` to keep the default import che
 
 from __future__ import annotations
 
-from aznamematch.matchers import lexical, phonetic  # noqa: F401  (register on import)
+from aznamematch.matchers import (  # noqa: F401  (register on import)
+    hybrid,
+    lexical,
+    phonetic,
+    regression_v1,
+)
 from aznamematch.matchers.base import Matcher, available, get_matcher, register
 
 __all__ = ["Matcher", "available", "get_matcher", "register", "load_optional"]
