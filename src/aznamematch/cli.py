@@ -63,15 +63,35 @@ def block(
 
 
 @app.command()
-def bench() -> None:
-    """Run matchers over the labeled pairs (Phase 6 — deferred)."""
-    _deferred("bench", "Phase 6 (matchers)")
+def bench(
+    config: str = typer.Option("configs/benchmark.yaml", "--config", "-c"),
+) -> None:
+    """Run all matchers over the labeled pairs and write results/ (accuracy + perf views)."""
+    from aznamematch.config import REPO_ROOT, get, load_config
+    from aznamematch.eval.report import write_results
+    from aznamematch.eval.runner import run_benchmark
+
+    typer.echo("Running benchmark (numbers come from this run; none are hardcoded)...")
+    results = run_benchmark(config)
+    out_dir = REPO_ROOT / get(load_config(config), "paths.results", "results")
+    write_results(results, out_dir)
+    typer.secho(f"Wrote results to {out_dir}", fg=typer.colors.GREEN)
+    report(config)
 
 
 @app.command()
-def report() -> None:
-    """Emit accuracy + performance views into results/ (Phase 7 — deferred)."""
-    _deferred("report", "Phase 7 (evaluation)")
+def report(
+    config: str = typer.Option("configs/benchmark.yaml", "--config", "-c"),
+) -> None:
+    """Print the results SUMMARY (run `bench` first to (re)generate it)."""
+    from aznamematch.config import REPO_ROOT, get, load_config
+
+    summary = REPO_ROOT / get(load_config(config), "paths.results", "results") / "SUMMARY.md"
+    if not summary.exists():
+        typer.secho(f"No summary at {summary}. Run `aznamematch bench` first.",
+                    fg=typer.colors.RED)
+        raise typer.Exit(code=2)
+    typer.echo(summary.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

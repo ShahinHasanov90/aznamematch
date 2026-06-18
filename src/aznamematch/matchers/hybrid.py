@@ -30,6 +30,7 @@ class HybridMatcher(Matcher):
         self.components = components
         self.mode = mode
         self.gate = gate
+        self.name = f"hybrid_{mode}"
 
     def score(self, a: str, b: str) -> float:
         if self.mode == "blend":

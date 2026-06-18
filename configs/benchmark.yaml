@@ -1,0 +1,27 @@
+# AzNameMatch — evaluation config. All numbers in results/ come from running this.
+
+seed: 20260618
+
+paths:
+  pairs: data/full/pairs.parquet
+  homoglyphs: data/adversarial/homoglyph_v1/homoglyphs.parquet
+  results: results
+
+split:
+  test_fraction: 0.6      # remainder trains RegressionV1 (and is the calibration pool)
+
+chosen_threshold: 0.5     # the "operating point" reported alongside best-F1
+perf_sample: 300          # pairs timed individually for the latency (perf) view
+
+# Cost ratios as [c_FP, c_FN]; c_FN:c_FP grows so missing a sanctioned entity dominates.
+cost_ratios:
+  - [1, 1]
+  - [1, 10]
+  - [1, 100]
+
+# Matchers flagged as emitting a true probability (calibration applies only to these).
+probabilistic: [regression_v1]
+
+# Optional tiers (CPU semantic on; LLM off for the deterministic reference run).
+with_semantic: true
+with_llm: false
