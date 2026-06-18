@@ -1,9 +1,4 @@
-"""Command-line interface: ``aznamematch generate | block | bench | report``.
-
-Only ``generate`` is implemented in this milestone (Phases 0-4). ``block``, ``bench`` and
-``report`` are documented stubs for the deferred phases and exit with a clear message
-rather than pretending to run.
-"""
+"""Command-line interface: ``aznamematch generate | block | bench | report``."""
 
 from __future__ import annotations
 
@@ -41,9 +36,30 @@ def _deferred(name: str, phase: str) -> None:
 
 
 @app.command()
-def block() -> None:
-    """Candidate blocking with RR / PQ / PC metrics (Phase 5 — deferred)."""
-    _deferred("block", "Phase 5 (blocking)")
+def block(
+    config: str = typer.Option("configs/generation.yaml", "--config", "-c"),
+    cap: int = typer.Option(6, "--cap", help="Max surfaces per identity (bounds all-pairs)."),
+) -> None:
+    """Run the blockers over generated surfaces and print RR / PQ / PC."""
+    import pandas as pd
+
+    from aznamematch.blocking.blockers import compare_blockers, records_from_surface_rows
+    from aznamematch.config import REPO_ROOT, get, load_config
+
+    cfg = load_config(config)
+    surf_path = (REPO_ROOT / get(cfg, "output.full_dir", "data/full") / "surfaces.parquet")
+    if not surf_path.exists():
+        typer.secho(f"No surfaces at {surf_path}. Run `aznamematch generate` first.",
+                    fg=typer.colors.RED)
+        raise typer.Exit(code=2)
+
+    rows = pd.read_parquet(surf_path).to_dict("records")
+    records = records_from_surface_rows(rows, per_identity_cap=cap)
+    typer.echo(f"Blocking over {len(records)} records (cap {cap}/identity):")
+    typer.echo(f"  {'blocker':14} {'RR':>7} {'PC':>7} {'PQ':>7}  {'cands':>9}")
+    for name, m in compare_blockers(records).items():
+        typer.echo(f"  {name:14} {m.reduction_ratio:7.4f} {m.pair_completeness:7.4f} "
+                   f"{m.pair_quality:7.4f}  {m.n_candidates:9d}")
 
 
 @app.command()
