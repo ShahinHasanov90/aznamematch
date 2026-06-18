@@ -1,6 +1,6 @@
 # AzNameMatch — reference results
 
-Test pairs: 1800 | RegressionV1 train pairs: 1200 | seed: 20260618 | semantic: True
+Test pairs: 1592 | RegressionV1 train pairs: 1046 | seed: 20260618 | semantic: True
 
 All numbers are produced by `aznamematch bench`; none are hardcoded. See the per-view files: [accuracy](accuracy.md), [perf](perf.md), [breakdown](breakdown.md), [cost](cost.md), [robustness & fairness](robustness_fairness.md), [homoglyph](homoglyph.md). Plots: `pr_curves.png`, `error_by_rootcause.png`, `per_script_f1.png`.
 
@@ -8,11 +8,11 @@ All numbers are produced by `aznamematch bench`; none are hardcoded. See the per
 
 | matcher | F1 | P | R | PR-AUC | ROC-AUC |
 | --- | --- | --- | --- | --- | --- |
-| hybrid_blend | 0.6900 | 0.5665 | 0.8822 | 0.4734 | 0.5450 |
-| hybrid_cascade | 0.6810 | 0.5493 | 0.8958 | 0.4687 | 0.5201 |
-| lexical | 0.6693 | 0.5107 | 0.9706 | 0.3987 | 0.3765 |
-| lexical_jaro_winkler | 0.6639 | 0.5014 | 0.9819 | 0.5101 | 0.4401 |
-| phonetic | 0.7418 | 0.6585 | 0.8494 | 0.5834 | 0.6706 |
-| phonetic_vanilla | 0.6582 | 0.4906 | 1.0000 | 0.4428 | 0.4175 |
-| regression_v1 | 0.8570 | 0.8555 | 0.8584 | 0.9383 | 0.9231 |
-| semantic | 0.6634 | 0.4977 | 0.9943 | 0.4411 | 0.4735 |
+| hybrid_blend | 0.7266 | 0.5728 | 0.9932 | 0.4941 | 0.4634 |
+| hybrid_cascade | 0.7266 | 0.5728 | 0.9932 | 0.4879 | 0.4362 |
+| lexical | 0.7190 | 0.5690 | 0.9763 | 0.4370 | 0.3225 |
+| lexical_jaro_winkler | 0.7160 | 0.5620 | 0.9865 | 0.5584 | 0.4064 |
+| phonetic | 0.7537 | 0.6672 | 0.8658 | 0.6069 | 0.6122 |
+| phonetic_vanilla | 0.7156 | 0.5572 | 1.0000 | 0.4920 | 0.3619 |
+| regression_v1 | 0.8600 | 0.8835 | 0.8377 | 0.9511 | 0.9276 |
+| semantic | 0.7197 | 0.5654 | 0.9899 | 0.4805 | 0.4215 |

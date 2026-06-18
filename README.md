@@ -29,19 +29,20 @@ For an offline run, set `with_semantic: false` in `configs/benchmark.yaml`.
 
 ## Reference results
 
-From the committed run (`results/`): seed `20260618`, **1800 test pairs** (RegressionV1
-trained on a disjoint 1200-pair split). Reproduce with `scripts/reproduce.sh`.
+From the committed run (`results/`): seed `20260618`, **1592 test pairs**, with an
+**entity-disjoint** split (RegressionV1 trains on a 1046-pair split sharing no canonical
+entity with the test set). Reproduce with `scripts/reproduce.sh`.
 
 | matcher | F1 | P | R | PR-AUC | ROC-AUC |
 |---------|----|----|----|--------|---------|
-| **regression_v1** | **0.857** | 0.856 | 0.858 | **0.938** | **0.923** |
-| phonetic (normalized) | 0.742 | 0.658 | 0.849 | 0.583 | 0.671 |
-| hybrid_blend | 0.690 | 0.566 | 0.882 | 0.473 | 0.545 |
-| hybrid_cascade | 0.681 | 0.549 | 0.896 | 0.469 | 0.520 |
-| lexical (token-set) | 0.669 | 0.511 | 0.971 | 0.399 | 0.377 |
-| lexical (Jaro-Winkler) | 0.664 | 0.501 | 0.982 | 0.510 | 0.440 |
-| semantic (mBERT cosine) | 0.663 | 0.498 | 0.994 | 0.441 | 0.474 |
-| phonetic (vanilla) | 0.658 | 0.491 | 1.000 | 0.443 | 0.418 |
+| **regression_v1** | **0.860** | 0.884 | 0.838 | **0.951** | **0.928** |
+| phonetic (normalized) | 0.754 | 0.667 | 0.866 | 0.607 | 0.612 |
+| hybrid_blend | 0.727 | 0.573 | 0.993 | 0.494 | 0.463 |
+| hybrid_cascade | 0.727 | 0.573 | 0.993 | 0.488 | 0.436 |
+| semantic (multilingual MiniLM cosine) | 0.720 | 0.565 | 0.990 | 0.481 | 0.422 |
+| lexical (token-set) | 0.719 | 0.569 | 0.976 | 0.437 | 0.323 |
+| lexical (Jaro-Winkler) | 0.716 | 0.562 | 0.987 | 0.558 | 0.406 |
+| phonetic (vanilla) | 0.716 | 0.557 | 1.000 | 0.492 | 0.362 |
 
 Full tables (threshold-sensitivity, fairness gap, cross-standard robustness, per-script-cell
 F1, error-by-root-cause, expected-cost ranking, latency) and plots are in
@@ -50,13 +51,14 @@ F1, error-by-root-cause, expected-cost ranking, latency) and plots are in
 **What the run shows** (the dataset is deliberately hard: 50% hard negatives, cross-script
 positives):
 
-- **RegressionV1** — the OpenSanctions-style production baseline — is strongest, because it
-  combines a cross-script phonetic signal with lexical features.
+- **RegressionV1** — the OpenSanctions-style production baseline — is strongest (ROC-AUC
+  0.928), because it combines a cross-script phonetic signal with lexical features. The
+  entity-disjoint split rules out memorization, so this reflects genuine generalization.
 - The **AZ-RU phonetic normalization layer is the active ingredient**: normalized phonetic
-  (ROC-AUC 0.671) far outperforms vanilla phonetic (ROC-AUC 0.418).
-- **Lexical and vanilla-phonetic score below ROC-AUC 0.5** — they rank the lexically-similar
-  hard negatives (e.g. token swaps) *above* the cross-script positives they cannot read.
-  This is exactly the failure mode the benchmark is built to expose.
+  (ROC-AUC 0.612) far outperforms vanilla phonetic (ROC-AUC 0.362).
+- **Lexical and vanilla-phonetic score below ROC-AUC 0.5** (0.32 / 0.36) — they rank the
+  lexically-similar hard negatives (e.g. token swaps) *above* the cross-script positives they
+  cannot read. This is exactly the failure mode the benchmark is built to expose.
 - **Adversarial homoglyphs** (`results/homoglyph.md`) are a near-binary capability check: at
   the 0.5 operating point, normalized-phonetic / RegressionV1 recall the confusable twins
   (1.00) while vanilla phonetic collapses (0.13) — TR39 confusable folding is the deciding
@@ -66,8 +68,9 @@ positives):
 
 ## Dataset
 
-500 seeded synthetic identities → ~18k surface forms → **3000 labeled pairs** (1500/1500,
-50% hard negatives) + a frozen adversarial homoglyph set. Schema and provenance:
+500 seeded synthetic identities → ~18k surface forms → **2993 labeled pairs** (1499/1494,
+~50% hard negatives; exact duplicates removed) + a frozen adversarial homoglyph set. Schema
+and provenance:
 [`docs/dataset_schema.md`](docs/dataset_schema.md). Generation methodology and related-work
 positioning: [`docs/methodology.md`](docs/methodology.md).
 

@@ -28,8 +28,13 @@ def _involves_any(standards_field: str, wanted: tuple[str, ...]) -> bool:
 
 def cross_standard_score(df: pd.DataFrame, scores: np.ndarray) -> dict:
     labels = df["label"].to_numpy()
-    named_mask = df["standards"].apply(lambda v: _involves_any(v, NAMED_STANDARDS)).to_numpy()
-    adhoc_mask = df["standards"].apply(lambda v: _involves_any(v, (AD_HOC,))).to_numpy()
+    # Strictly disjoint slices: tune on pairs involving ONLY named standards, evaluate on pairs
+    # involving ONLY ad-hoc (a pair tagged e.g. "ICAO;ad_hoc" belongs to neither, so the
+    # tune/eval sets never overlap).
+    named = df["standards"].apply(lambda v: _involves_any(v, NAMED_STANDARDS))
+    adhoc = df["standards"].apply(lambda v: _involves_any(v, (AD_HOC,)))
+    named_mask = (named & ~adhoc).to_numpy()
+    adhoc_mask = (adhoc & ~named).to_numpy()
 
     result: dict = {"n_named": int(named_mask.sum()), "n_adhoc": int(adhoc_mask.sum())}
     if named_mask.sum() == 0 or adhoc_mask.sum() == 0 \

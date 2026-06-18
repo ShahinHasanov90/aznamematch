@@ -4,11 +4,11 @@ False-negative counts per category, per matcher (at each matcher's best-F1 thres
 
 | matcher | script_divergence (FN) | phonetic_orthographic (FN) | lexical (FN) | hard_negative_collision (FN) | homoglyph (FN) | other (FN) | FP(hard) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| hybrid_blend | 101 | 0 | 3 | 0 | 0 | 0 | 452 |
-| hybrid_cascade | 92 | 0 | 0 | 0 | 0 | 0 | 452 |
-| lexical | 26 | 0 | 0 | 0 | 0 | 0 | 452 |
-| lexical_jaro_winkler | 14 | 0 | 2 | 0 | 0 | 0 | 452 |
-| phonetic | 113 | 0 | 20 | 0 | 0 | 0 | 370 |
-| phonetic_vanilla | 0 | 0 | 0 | 0 | 0 | 0 | 452 |
-| regression_v1 | 86 | 1 | 38 | 0 | 0 | 0 | 34 |
-| semantic | 5 | 0 | 0 | 0 | 0 | 0 | 452 |
+| hybrid_blend | 6 | 0 | 0 | 0 | 0 | 0 | 445 |
+| hybrid_cascade | 6 | 0 | 0 | 0 | 0 | 0 | 445 |
+| lexical | 21 | 0 | 0 | 0 | 0 | 0 | 445 |
+| lexical_jaro_winkler | 11 | 0 | 1 | 0 | 0 | 0 | 445 |
+| phonetic | 103 | 0 | 16 | 0 | 0 | 0 | 373 |
+| phonetic_vanilla | 0 | 0 | 0 | 0 | 0 | 0 | 445 |
+| regression_v1 | 92 | 3 | 49 | 0 | 0 | 0 | 34 |
+| semantic | 7 | 0 | 2 | 0 | 0 | 0 | 445 |

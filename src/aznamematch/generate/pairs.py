@@ -331,7 +331,17 @@ def build_pairs(identities: list[Identity], by_id: dict[str, list[SurfaceForm]],
     easy = _build_easy_negatives(identities, by_id, n_easy, targets, rng)
     hard = _build_hard_negatives(n_hard, mix, rng)
 
-    pairs = positives + easy + hard
+    # Drop exact duplicate (surface1, surface2, label) pairs (rare hard-negative collisions),
+    # so the same labeled surface pair can't straddle an eval split.
+    pairs: list[Pair] = []
+    seen_pairs: set[tuple[str, str, int]] = set()
+    for p in positives + easy + hard:
+        key = (p.surface1, p.surface2, p.label)
+        if key in seen_pairs:
+            continue
+        seen_pairs.add(key)
+        pairs.append(p)
+
     # Deterministic shuffle so positives/negatives interleave.
     order = rng.permutation(len(pairs))
     return [pairs[i] for i in order]

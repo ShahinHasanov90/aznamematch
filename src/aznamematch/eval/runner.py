@@ -68,12 +68,26 @@ def run_benchmark(config_path: str | None = None) -> dict[str, Any]:
     pairs_path = REPO_ROOT / get(cfg, "paths.pairs")
     df = pd.read_parquet(pairs_path).reset_index(drop=True)
 
-    # Deterministic train/test split (train carves out RegressionV1's training pairs).
-    rng = np.random.default_rng(seed)
-    perm = rng.permutation(len(df))
-    n_test = int(len(df) * float(get(cfg, "split.test_fraction", 0.6)))
-    test_df = df.iloc[perm[:n_test]].reset_index(drop=True)
-    train_df = df.iloc[perm[n_test:]].reset_index(drop=True)
+    # Entity-disjoint, deterministic train/test split: partition canonical ENTITIES (not pair
+    # rows) so no test entity's surfaces are ever seen during RegressionV1 training. Positives
+    # have id1==id2 (one entity) so they stay whole; easy negatives whose two entities land on
+    # opposite sides are dropped; synthetic hard negatives (unique ids per pair) get a coin.
+    test_frac = float(get(cfg, "split.test_fraction", 0.6))
+    ent_rng = np.random.default_rng(seed)
+    real_ids = sorted({i for i in pd.concat([df["id1"], df["id2"]]) if str(i).startswith("E")})
+    is_test_entity = {eid: bool(ent_rng.random() < test_frac) for eid in real_ids}
+    hn_rng = np.random.default_rng(seed + 1)
+
+    split: list[str] = []
+    for a, b in zip(df["id1"], df["id2"], strict=True):
+        if str(a).startswith("E") and str(b).startswith("E"):
+            ta, tb = is_test_entity[a], is_test_entity[b]
+            split.append(("test" if ta else "train") if ta == tb else "drop")
+        else:  # synthetic hard negative
+            split.append("test" if hn_rng.random() < test_frac else "train")
+    df = df.assign(_split=split)
+    test_df = df[df["_split"] == "test"].drop(columns="_split").reset_index(drop=True)
+    train_df = df[df["_split"] == "train"].drop(columns="_split").reset_index(drop=True)
 
     test_pairs = list(zip(test_df["surface1"], test_df["surface2"], strict=True))
     labels = test_df["label"].to_numpy()

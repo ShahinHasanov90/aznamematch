@@ -7,39 +7,39 @@
 
 | rank | matcher | ECT | thr |
 | --- | --- | --- | --- |
-| 1 | regression_v1 | 0.1383 | 0.49 |
-| 2 | phonetic | 0.2900 | 0.01 |
-| 3 | hybrid_blend | 0.3889 | 0.12 |
-| 4 | hybrid_cascade | 0.4117 | 0.14 |
-| 5 | lexical_jaro_winkler | 0.4594 | 0.92 |
-| 6 | lexical | 0.4706 | 0.06 |
-| 7 | semantic | 0.4767 | 0.60 |
-| 8 | phonetic_vanilla | 0.5094 | 0.00 |
+| 1 | regression_v1 | 0.1514 | 0.61 |
+| 2 | phonetic | 0.3153 | 0.01 |
+| 3 | hybrid_blend | 0.3832 | 0.11 |
+| 4 | hybrid_cascade | 0.3926 | 0.14 |
+| 5 | lexical | 0.4253 | 0.06 |
+| 6 | semantic | 0.4296 | 0.34 |
+| 7 | lexical_jaro_winkler | 0.4359 | 0.37 |
+| 8 | phonetic_vanilla | 0.4428 | 0.00 |
 
 
 ## c_fn:c_fp=10:1
 
 | rank | matcher | ECT | thr |
 | --- | --- | --- | --- |
-| 1 | regression_v1 | 0.4439 | 0.03 |
-| 2 | semantic | 0.5050 | 0.21 |
-| 3 | lexical | 0.5094 | 0.00 |
-| 4 | lexical_jaro_winkler | 0.5094 | 0.00 |
-| 5 | phonetic | 0.5094 | 0.00 |
-| 6 | phonetic_vanilla | 0.5094 | 0.00 |
-| 7 | hybrid_blend | 0.5094 | 0.00 |
-| 8 | hybrid_cascade | 0.5094 | 0.00 |
+| 1 | regression_v1 | 0.3555 | 0.13 |
+| 2 | semantic | 0.4391 | 0.22 |
+| 3 | lexical | 0.4428 | 0.00 |
+| 4 | lexical_jaro_winkler | 0.4428 | 0.00 |
+| 5 | phonetic | 0.4428 | 0.00 |
+| 6 | phonetic_vanilla | 0.4428 | 0.00 |
+| 7 | hybrid_blend | 0.4428 | 0.00 |
+| 8 | hybrid_cascade | 0.4428 | 0.00 |
 
 
 ## c_fn:c_fp=100:1
 
 | rank | matcher | ECT | thr |
 | --- | --- | --- | --- |
-| 1 | regression_v1 | 0.4439 | 0.03 |
-| 2 | semantic | 0.5050 | 0.21 |
-| 3 | lexical | 0.5094 | 0.00 |
-| 4 | lexical_jaro_winkler | 0.5094 | 0.00 |
-| 5 | phonetic | 0.5094 | 0.00 |
-| 6 | phonetic_vanilla | 0.5094 | 0.00 |
-| 7 | hybrid_blend | 0.5094 | 0.00 |
-| 8 | hybrid_cascade | 0.5094 | 0.00 |
+| 1 | regression_v1 | 0.3744 | 0.02 |
+| 2 | semantic | 0.4391 | 0.22 |
+| 3 | lexical | 0.4428 | 0.00 |
+| 4 | lexical_jaro_winkler | 0.4428 | 0.00 |
+| 5 | phonetic | 0.4428 | 0.00 |
+| 6 | phonetic_vanilla | 0.4428 | 0.00 |
+| 7 | hybrid_blend | 0.4428 | 0.00 |
+| 8 | hybrid_cascade | 0.4428 | 0.00 |

@@ -76,6 +76,16 @@ in the `same` script cell; they are sliced by `hard_negative_type`, a separate a
   calibration) and a perf mode (μs mean/p50/p95 + slowest cases); we will emit both.
 - **Neural EM reference** — Ditto (Li et al., 2020); not trained here. Sentence-embedding +
   optional LLM matchers are the modern comparison points.
+### Evaluation split (entity-disjoint)
+
+The benchmark uses an **entity-disjoint** train/test split (`eval/runner.py`): canonical
+entities — not pair rows — are partitioned, so no test entity's surfaces are ever seen while
+training RegressionV1. Positives (whose two members share one `canonical_id`) stay whole;
+easy negatives whose two entities land on opposite sides are dropped; synthetic hard negatives
+(unique ids per pair) are coin-assigned. Exact-duplicate surface pairs are removed at
+generation time so an identical labeled pair cannot straddle the split. This is the
+textbook-correct ER protocol and prevents entity memorization from inflating results.
+
 - **Evaluation rigor** — EM = blocking → matching; we will report blocking (RR/PQ/PC) and
   matching (P/R/F1, PR-AUC, ROC-AUC) plus threshold sensitivity, an error-by-root-cause
   taxonomy, a cross-standard (Unknown-Standard) robustness score, fairness gaps across
