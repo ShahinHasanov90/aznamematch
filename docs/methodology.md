@@ -44,6 +44,28 @@ Deterministic, seeded (`configs/generation.yaml`); same seed → byte-identical 
 6. **Labeled pairs** (`generate/pairs.py`) — positives, easy negatives, and four kinds of hard
    negatives, with full provenance. (`docs/dataset_schema.md`)
 
+### Engineered cross-script distribution (NOT a natural frequency)
+
+The script-pair cell sizes (AZ-RU / AZ-EN / RU-EN / same) are **deliberately engineered**, by
+design, so that each cell — the AZ↔RU cell in particular — is large enough to compute stable
+per-cell metrics and to be compared against the others. Two mechanisms:
+
+- **Cyrillic-surface emphasis** (`noise.cyrillic_extra_corrupted`): extra corrupted twins are
+  generated for each clean Cyrillic surface. Cyrillic forms are otherwise outnumbered ~4:1 by
+  Latin romanizations (one AZ-Cyrillic + one Russian-Cyrillic surface per rendering vs ~9 Latin
+  ones), which would starve the AZ-RU cell. The emphasis raises the Cyrillic pool so AZ-RU
+  pairs can be drawn with *diversity* rather than reusing one Cyrillic form.
+- **Stratified sampling** (`pairs.script_pair_targets`): both positives and easy negatives are
+  allocated across cells to configured target proportions (default AZ-RU 0.30 / RU-EN 0.30 /
+  AZ-EN 0.22 / same 0.18), and the cells are kept label-balanced so each is individually
+  evaluable.
+
+**This means the cell proportions in this dataset do NOT estimate how often each script pair
+co-occurs in real compliance data.** They are a controlled experimental design. Any per-cell
+result must be read as "performance *on this engineered cell*", and absolute cell sizes carry
+no real-world prevalence information. (Hard negatives are synthesized in AZ-Latin and so fall
+in the `same` script cell; they are sliced by `hard_negative_type`, a separate axis.)
+
 ## Related work to be replicated / compared (deferred phases)
 
 - **Production baseline** — OpenSanctions nomenklatura **RegressionV1**, an 18-feature

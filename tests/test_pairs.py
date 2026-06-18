@@ -110,9 +110,59 @@ def test_determinism(small):
     assert [p.to_row() for p in pairs] == [p.to_row() for p in pairs2]
 
 
+def test_reproducible_regardless_of_target_key_order(small):
+    # The dataset must depend on target VALUES, not the incidental key order in the config
+    # (a re-serialization that sorts keys must not change the output).
+    cfg, identities, by_id, pairs = small
+    reordered = copy.deepcopy(cfg)
+    t = reordered["pairs"]["script_pair_targets"]
+    reordered["pairs"]["script_pair_targets"] = {k: t[k] for k in reversed(list(t))}
+    pairs2 = build_pairs(identities, by_id, reordered, stage_seeds(cfg["seed"]))
+    assert [p.to_row() for p in pairs] == [p.to_row() for p in pairs2]
+
+
 def test_positives_are_cross_script_majority(small):
-    # The cross-script bias should make most positives genuinely cross-script.
+    # Stratified sampling should make most positives genuinely cross-script.
     _, _, _, pairs = small
     pos = [p for p in pairs if p.label == 1]
     cross = [p for p in pos if p.script_pair != "same"]
     assert len(cross) > len(pos) * 0.5
+
+
+def test_az_ru_positives_well_represented(small):
+    # The AZ-RU cell must be a major, comparable cross-script cell (the whole point of the
+    # cyrl emphasis + stratified targeting), not a thin sliver.
+    from collections import Counter
+
+    _, _, _, pairs = small
+    cells = Counter(p.script_pair for p in pairs if p.label == 1)
+    cross = {c: cells.get(c, 0) for c in ("AZ-RU", "AZ-EN", "RU-EN")}
+    assert cross["AZ-RU"] >= 0.6 * max(cross.values())
+    assert cross["AZ-RU"] >= cells.get("same", 0)
+
+
+def test_cross_script_cells_are_label_balanced(small):
+    # Each cross-script cell needs BOTH labels to be individually evaluable later.
+    _, _, _, pairs = small
+    for c in ("AZ-RU", "AZ-EN", "RU-EN"):
+        labels = {p.label for p in pairs if p.script_pair == c}
+        assert labels == {0, 1}, f"cell {c} missing a label: {labels}"
+
+
+def test_cyrillic_emphasis_increases_cyrl_surfaces():
+    from aznamematch.generate.surface import build_surfaces
+    from aznamematch.generate.translit.base import CYRL
+
+    base = copy.deepcopy(load_config())
+    base["noise"]["p_surface_corrupted"] = 0.0  # isolate the extra-cyrillic pass
+    cfg0 = copy.deepcopy(base)
+    cfg0["noise"]["cyrillic_extra_corrupted"] = 0
+    cfgn = copy.deepcopy(base)
+    cfgn["noise"]["cyrillic_extra_corrupted"] = 3
+
+    seeds = stage_seeds(base["seed"])
+    person = next(i for i in generate_identities(base, seeds) if i.entity_type == "person")
+    seq = seeds.seq("surface")
+    n0 = sum(1 for s in build_surfaces(person, cfg0, record_rng(seq, 0)) if s.script == CYRL)
+    nn = sum(1 for s in build_surfaces(person, cfgn, record_rng(seq, 0)) if s.script == CYRL)
+    assert nn > n0

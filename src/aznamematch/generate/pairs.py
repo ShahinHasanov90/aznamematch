@@ -114,35 +114,76 @@ def _plain_surface(cid: str, text: str, group: str) -> SurfaceForm:
 
 
 # --- positives + easy negatives --------------------------------------------------------
+# Script-pair cell -> the two surface categories it requires.
+_CELL_REQ = {"AZ-RU": ("AZ", "RU"), "AZ-EN": ("AZ", "EN"), "RU-EN": ("RU", "EN")}
+
+
+def _pick_distinct(a: list[int], b: list[int], sfs: list[SurfaceForm],
+                   rng: np.random.Generator, same_pool: bool) -> tuple[int, int] | None:
+    """Pick i from ``a`` and j from ``b`` with distinct surface text (a few retries)."""
+    if not a or not b or (same_pool and len(a) < 2):
+        return None
+    for _ in range(6):
+        i = int(rng.choice(a))
+        cand = [k for k in b if k != i and sfs[k].surface != sfs[i].surface]
+        if cand:
+            return i, int(rng.choice(cand))
+    return None
+
+
+def _pick_cell_pair(cell: str, by_cat: dict[str, list[int]], sfs: list[SurfaceForm],
+                    rng: np.random.Generator) -> tuple[int, int] | None:
+    if cell in _CELL_REQ:
+        c1, c2 = _CELL_REQ[cell]
+        return _pick_distinct(by_cat[c1], by_cat[c2], sfs, rng, same_pool=False)
+    # "same": a same-category pair (typo / romanization-variant positive).
+    pools = [c for c in ("AZ", "RU", "EN") if len(by_cat[c]) >= 2]
+    if not pools:
+        return None
+    c = str(rng.choice(pools))
+    return _pick_distinct(by_cat[c], by_cat[c], sfs, rng, same_pool=True)
+
+
 def _build_positives(identities: list[Identity], by_id: dict[str, list[SurfaceForm]],
-                     per_identity: int, rng: np.random.Generator,
-                     cross_script_bias: float = 0.75) -> list[Pair]:
-    """Sample positive pairs, biased toward cross-script pairs (the benchmark's focus)."""
+                     per_identity: int, targets: dict[str, float],
+                     rng: np.random.Generator) -> list[Pair]:
+    """Stratified positive sampling: allocate each identity's positives across script-pair
+    cells per ``targets``, so cross-script cells (esp. AZ-RU) reach comparable, usable sizes.
+
+    These cell proportions are ENGINEERED, not natural frequencies (see docs/methodology.md).
+    """
+    # Sort cells canonically so the sampling sequence depends on the config VALUES, not the
+    # incidental key order in the YAML (which a re-serialization could change) — reproducibility.
+    cells = sorted(targets.keys())
+    weights = np.array([float(targets[c]) for c in cells], dtype=float)
+    weights = weights / weights.sum()
+    fallback_order = ["AZ-RU", "RU-EN", "AZ-EN", "same"]
+
     pos: list[Pair] = []
     counter = 0
     for ident in identities:
         sfs = by_id.get(ident.canonical_id, [])
         if len(sfs) < 2:
             continue
+        by_cat: dict[str, list[int]] = {"AZ": [], "RU": [], "EN": []}
+        for k, s in enumerate(sfs):
+            by_cat[_CATEGORY[s.script]].append(k)
+
         used: set[frozenset[int]] = set()
         made = 0
-        for _ in range(per_identity * 8):
+        for _ in range(per_identity * 12):
             if made >= per_identity:
                 break
-            i = int(rng.integers(0, len(sfs)))
-            cat_i = _CATEGORY[sfs[i].script]
-            cross = rng.random() < cross_script_bias
-            cands = [
-                k for k in range(len(sfs))
-                if k != i and sfs[k].surface != sfs[i].surface
-                and (not cross or _CATEGORY[sfs[k].script] != cat_i)
-            ]
-            if not cands:  # fall back to any text-distinct partner
-                cands = [k for k in range(len(sfs))
-                         if k != i and sfs[k].surface != sfs[i].surface]
-            if not cands:
+            cell = str(rng.choice(cells, p=weights))
+            pick = _pick_cell_pair(cell, by_cat, sfs, rng)
+            if pick is None:  # this identity can't build the drawn cell — try others
+                for alt in fallback_order:
+                    pick = _pick_cell_pair(alt, by_cat, sfs, rng)
+                    if pick is not None:
+                        break
+            if pick is None:
                 continue
-            j = int(rng.choice(cands))
+            i, j = pick
             key = frozenset({i, j})
             if key in used:
                 continue
@@ -154,22 +195,58 @@ def _build_positives(identities: list[Identity], by_id: dict[str, list[SurfaceFo
     return pos
 
 
+def _cat_index(sfs: list[SurfaceForm]) -> dict[str, list[int]]:
+    idx: dict[str, list[int]] = {"AZ": [], "RU": [], "EN": []}
+    for k, s in enumerate(sfs):
+        idx[_CATEGORY[s.script]].append(k)
+    return idx
+
+
 def _build_easy_negatives(identities: list[Identity], by_id: dict[str, list[SurfaceForm]],
-                          n: int, rng: np.random.Generator) -> list[Pair]:
+                          n: int, targets: dict[str, float],
+                          rng: np.random.Generator) -> list[Pair]:
+    """Easy negatives stratified to the SAME cell targets as positives, so each script-pair
+    cell is label-balanced and individually evaluable.
+    """
+    cells = sorted(targets.keys())  # canonical order — see _build_positives
+    weights = np.array([float(targets[c]) for c in cells], dtype=float)
+    weights = weights / weights.sum()
+
     eligible = [i for i in identities if by_id.get(i.canonical_id)]
+    cat_idx = {i.canonical_id: _cat_index(by_id[i.canonical_id]) for i in eligible}
+
     out: list[Pair] = []
     seen: set[tuple[str, str]] = set()
     attempts = 0
-    while len(out) < n and attempts < n * 20:
+    while len(out) < n and attempts < n * 40:
         attempts += 1
-        a_id, b_id = (int(x) for x in rng.choice(len(eligible), size=2, replace=False))
-        ia, ib = eligible[a_id], eligible[b_id]
+        cell = str(rng.choice(cells, p=weights))
+        c1, c2 = _CELL_REQ.get(cell, (None, None))
+
+        a, b = (int(x) for x in rng.choice(len(eligible), size=2, replace=False))
+        ia, ib = eligible[a], eligible[b]
         # "clearly different": different family root (persons) avoids accidental hardness.
         if ia.entity_type == "person" and ib.entity_type == "person" \
                 and ia.family_root == ib.family_root:
             continue
-        sa = by_id[ia.canonical_id][int(rng.integers(0, len(by_id[ia.canonical_id])))]
-        sb = by_id[ib.canonical_id][int(rng.integers(0, len(by_id[ib.canonical_id])))]
+
+        ca = cat_idx[ia.canonical_id]
+        cb = cat_idx[ib.canonical_id]
+        if cell == "same":  # same category on both sides
+            shared = [c for c in ("AZ", "RU", "EN") if ca[c] and cb[c]]
+            if not shared:
+                continue
+            cc = str(rng.choice(shared))
+            la, lb = ca[cc], cb[cc]
+        else:
+            if not ca[c1] or not cb[c2]:
+                continue
+            la, lb = ca[c1], cb[c2]
+
+        sa = by_id[ia.canonical_id][int(rng.choice(la))]
+        sb = by_id[ib.canonical_id][int(rng.choice(lb))]
+        if sa.surface == sb.surface:
+            continue
         key = (sa.surface, sb.surface)
         if key in seen:
             continue
@@ -243,13 +320,15 @@ def build_pairs(identities: list[Identity], by_id: dict[str, list[SurfaceForm]],
     neg_per_pos = float(get(cfg, "pairs.neg_per_pos", 1.0))
     hard_frac = float(get(cfg, "pairs.hard_negative_fraction", 0.5))
     mix = dict(get(cfg, "pairs.hard_negative_mix", {}))
+    targets = dict(get(cfg, "pairs.script_pair_targets",
+                       {"AZ-RU": 0.3, "AZ-EN": 0.22, "RU-EN": 0.3, "same": 0.18}))
 
-    positives = _build_positives(identities, by_id, per_identity, rng)
+    positives = _build_positives(identities, by_id, per_identity, targets, rng)
     n_neg = round(len(positives) * neg_per_pos)
     n_hard = round(n_neg * hard_frac)
     n_easy = n_neg - n_hard
 
-    easy = _build_easy_negatives(identities, by_id, n_easy, rng)
+    easy = _build_easy_negatives(identities, by_id, n_easy, targets, rng)
     hard = _build_hard_negatives(n_hard, mix, rng)
 
     pairs = positives + easy + hard

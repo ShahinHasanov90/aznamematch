@@ -54,6 +54,10 @@ transliteration:
 noise:
   enabled: true
   p_surface_corrupted: 0.5  # chance a clean surface form also gets a corrupted twin
+  # Cyrillic emphasis: extra corrupted twins generated per CLEAN Cyrillic surface. Raises the
+  # Cyrillic surface ratio so AZ-RU pairs can be built with diversity (Cyrillic is otherwise
+  # outnumbered ~4:1 by Latin romanizations). See docs/dataset_schema.md.
+  cyrillic_extra_corrupted: 2
   p_corrupt_token: 0.35   # chance a given token receives any corruption
   rates:                  # conditional rates given a token is corrupted
     char_edit: 0.30       # insert / delete / substitute / transpose one char
@@ -90,6 +94,15 @@ pairs:
     generation_collision: 1.0
     surname_collision: 1.0
     one_edit: 1.0
+  # Stratified positive sampling: target proportions of POSITIVE pairs across script-pair
+  # cells. These are ENGINEERED for statistically usable, comparable cell sizes (esp. AZ-RU),
+  # NOT estimates of real-world script-pair frequency. AZ=latn-az, RU=cyrl, EN=latn-translit.
+  # See docs/methodology.md "Engineered distribution".
+  script_pair_targets:
+    AZ-RU: 0.30
+    AZ-EN: 0.22
+    RU-EN: 0.30
+    same: 0.18
 
 # ---------------------------------------------------------------------------
 # Output paths

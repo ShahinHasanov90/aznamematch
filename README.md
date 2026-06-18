@@ -35,4 +35,13 @@ uv run pytest                # run the test suite
 - Standards-grounded — BGN/PCGN, ALA-LC, ISO 9, ICAO 9303, GOST 7.79, Unicode TR39 (cited
   in `docs/`).
 
+> **⚠️ The cross-script cell distribution is engineered, not natural.** Positive and negative
+> pairs are *deliberately* stratified across script-pair cells (AZ-RU / AZ-EN / RU-EN / same)
+> and the Cyrillic surface pool is enlarged so the AZ↔RU cell is large, diverse, and
+> label-balanced enough for stable per-cell metrics. These proportions are a controlled
+> experimental design — they do **not** estimate how often each script pair occurs in real
+> compliance data. Tune them in `configs/generation.yaml` (`pairs.script_pair_targets`,
+> `noise.cyrillic_extra_corrupted`). See `docs/methodology.md` → "Engineered cross-script
+> distribution".
+
 See `docs/DESIGN.md` and `docs/` for design detail. License: MIT (`LICENSE`).

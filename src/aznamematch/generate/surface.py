@@ -21,7 +21,7 @@ from aznamematch.config import get
 from aznamematch.generate import noise
 from aznamematch.generate.canonical import Identity
 from aznamematch.generate.translit import generate_variants
-from aznamematch.generate.translit.base import LATN_AZ, NONE
+from aznamematch.generate.translit.base import CYRL, LATN_AZ, NONE
 
 
 @dataclass(frozen=True)
@@ -115,19 +115,29 @@ def build_surfaces(ident: Identity, cfg: dict[str, Any],
         for v in generate_variants(text, produce_russian=is_person, cfg=cfg, rng=rng):
             add(v.text, v.script, v.standard, stf, (), g, p, f)
 
-    # Corruption pass over a snapshot of the clean surfaces.
-    p_corrupt = float(get(cfg, "noise.p_surface_corrupted", 0.5))
-    for sf in list(surfaces):
-        if rng.random() >= p_corrupt:
-            continue
-        droppable = (
-            _patronymic_indices(sf.patronymic) if sf.script == LATN_AZ else None
-        )
+    clean = list(surfaces)  # snapshot before any corruption is appended
+
+    def corrupt_once(sf: SurfaceForm) -> None:
+        droppable = _patronymic_indices(sf.patronymic) if sf.script == LATN_AZ else None
         ctext, ctypes = noise.corrupt(
             sf.surface, sf.script, rng, cfg, droppable_indices=droppable
         )
         if ctypes and ctext != sf.surface:
             add(ctext, sf.script, sf.translit_standard, sf.suffix_transform,
                 tuple(ctypes), sf.given, sf.patronymic, sf.family)
+
+    # Standard corruption pass: a corrupted twin for a fraction of all clean surfaces.
+    p_corrupt = float(get(cfg, "noise.p_surface_corrupted", 0.5))
+    for sf in clean:
+        if rng.random() < p_corrupt:
+            corrupt_once(sf)
+
+    # Cyrillic emphasis: extra corrupted twins for each clean Cyrillic surface, so AZ-RU pairs
+    # can be drawn with diversity (Cyrillic is otherwise outnumbered by Latin romanizations).
+    extra_cyr = int(get(cfg, "noise.cyrillic_extra_corrupted", 0))
+    for sf in clean:
+        if sf.script == CYRL:
+            for _ in range(extra_cyr):
+                corrupt_once(sf)
 
     return surfaces

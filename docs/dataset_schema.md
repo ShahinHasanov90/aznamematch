@@ -58,9 +58,16 @@ setup, and the adversarial set is committed because it is frozen and versioned.
 ### Pair composition
 
 Counts and ratios come from `pairs.*` in the config: `positives_per_identity`,
-`neg_per_pos`, `hard_negative_fraction`, `hard_negative_mix`. Positives are sampled with a
-cross-script bias (the benchmark's focus). Hard negatives are *synthesized* from the
-component banks (not drawn from the 500 canonical identities) and carry synthetic ids.
+`neg_per_pos`, `hard_negative_fraction`, `hard_negative_mix`, and `script_pair_targets`.
+
+Positives **and** easy negatives are **stratified** across script-pair cells to
+`script_pair_targets` (default AZ-RU 0.30 / RU-EN 0.30 / AZ-EN 0.22 / same 0.18), and the
+Cyrillic surface pool is enlarged via `noise.cyrillic_extra_corrupted` so the AZ-RU cell is
+large, diverse, and label-balanced. **These cell proportions are engineered for evaluability,
+NOT estimates of real-world script-pair frequency** — see docs/methodology.md "Engineered
+cross-script distribution". Hard negatives are *synthesized* from the component banks (not
+drawn from the 500 canonical identities), are AZ-Latin (`same` script cell), and carry
+synthetic ids; slice them by `hard_negative_type`.
 
 ## Freeze
 
