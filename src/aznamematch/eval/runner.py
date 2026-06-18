@@ -38,7 +38,7 @@ def build_matchers(with_semantic: bool, with_llm: bool):
         if LLMMatcher.available():
             matchers.append(LLMMatcher())
         else:
-            print("  [llm] skipped: LLM_API_KEY / llm SDK not available.")
+            print("  [llm] skipped: set LLM_API_KEY / LLM_BASE_URL / LLM_MODEL to enable.")
     return matchers
 
 

@@ -26,15 +26,6 @@ def generate(
     run_generation(config)
 
 
-def _deferred(name: str, phase: str) -> None:
-    typer.secho(
-        f"`{name}` is part of {phase} and is not built in this milestone "
-        f"(generation only). See docs/DESIGN.md for the roadmap.",
-        fg=typer.colors.YELLOW,
-    )
-    raise typer.Exit(code=2)
-
-
 @app.command()
 def block(
     config: str = typer.Option("configs/generation.yaml", "--config", "-c"),

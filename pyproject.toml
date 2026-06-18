@@ -36,8 +36,6 @@ matchers = [
     "scikit-learn>=1.4",
     "sentence-transformers>=2.6",
 ]
-# Optional, gated LLM matcher tier (Phase 6).
-llm = ["llm>=0.40"]
 # Plotting for the reporting view (Phase 7).
 plots = ["matplotlib>=3.8"]
 # Developer tooling.

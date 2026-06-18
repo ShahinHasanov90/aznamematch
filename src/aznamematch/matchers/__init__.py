@@ -1,7 +1,7 @@
 """Matchers (Phase 6). Each subclasses Matcher and exposes score(a, b) -> float in [0, 1].
 
 Importing this package registers the lightweight matchers (lexical, phonetic, regression,
-hybrid). The semantic (sentence-transformers/torch) and LLM (llm) matchers are
+hybrid). The semantic (sentence-transformers/torch) and LLM (OpenAI-compatible) matchers are
 imported lazily by name via :func:`load_optional` to keep the default import cheap.
 """
 
