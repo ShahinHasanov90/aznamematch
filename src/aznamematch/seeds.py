@@ -12,7 +12,8 @@ from dataclasses import dataclass
 import numpy as np
 
 # Ordered names of the pipeline stages that consume randomness. The order is part of the
-# reproducibility contract: appending a new stage is safe, reordering is NOT.
+# reproducibility contract: appending a new stage is safe (SeedSequence.spawn is incremental,
+# so existing children are unchanged), reordering is NOT.
 STAGE_NAMES: tuple[str, ...] = (
     "canonical",
     "suffix_matrix",
@@ -20,6 +21,7 @@ STAGE_NAMES: tuple[str, ...] = (
     "noise",
     "homoglyph",
     "pairs",
+    "surface",  # per-identity surface-form construction (translit + noise combined stream)
 )
 
 

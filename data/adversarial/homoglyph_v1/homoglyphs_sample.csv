@@ -1,0 +1,51 @@
+canonical_id,clean,attacked,label,is_homoglyph,swapped_codepoints,diacritics_stripped,fold_clean,fold_attacked
+E000000,Ferid Movsumzade,Ferіd Мovѕumzаdе,1,True,i->U+0456;M->U+041C;s->U+0455;a->U+0430;e->U+0435,True,ferid movsumzade,ferid movsumzade
+E000001,Fidan Kenan Gizi Beyova,Fidan Kеnаn Gіzі Beyоvа,1,True,e->U+0435;a->U+0430;i->U+0456;i->U+0456;o->U+043E;a->U+0430,False,fidan kenan gizi beyova,fidan kenan gizi beyova
+E000002,Rena Ramazan Gizi Mejidova,Rеnа Rамazаn Gizі Mејіdоva,1,True,e->U+0435;a->U+0430;a->U+0430;m->U+043C;a->U+0430;i->U+0456;e->U+0435;j->U+0458;i->U+0456;o->U+043E,True,rena ramazan gizi mejidova,rena ramazan gizi mejidova
+E000003,Shahin Anar Oghlu Salmanzade,Ѕһahіn Anаr Оghlu Sаlмаnzаdе,1,True,S->U+0405;h->U+04BB;i->U+0456;a->U+0430;O->U+041E;a->U+0430;m->U+043C;a->U+0430;a->U+0430;e->U+0435,False,shahin anar oghlu salmanzade,shahin anar oghlu salmanzade
+E000004,Odlar Korporasiya,Оdlаr Kоrроrаsіyа,1,True,O->U+041E;a->U+0430;o->U+043E;p->U+0440;o->U+043E;a->U+0430;i->U+0456;a->U+0430,True,odlar korporasiya,odlar korporasiya
+E000005,Afag Kenan Gizi Guliyeva,Afаg Кеnаn Gіzі Guliуеva,1,True,a->U+0430;K->U+041A;e->U+0435;a->U+0430;i->U+0456;i->U+0456;y->U+0443;e->U+0435,False,afag kenan gizi guliyeva,afag kenan gizi guliyeva
+E000006,Ilgar Huseyn Oghlu Serdarov,Іlgаr Нuѕеуn Оgһlu Sеrdarov,1,True,I->U+0406;a->U+0430;H->U+041D;s->U+0455;e->U+0435;y->U+0443;O->U+041E;h->U+04BB;e->U+0435,False,ilgar huseyn oghlu serdarov,ilgar huseyn oghlu serdarov
+E000007,Leyla Tahir Gizi Velizade,Leуlа Тahir Gіzi Vеlіzаde,1,True,y->U+0443;a->U+0430;T->U+0422;i->U+0456;e->U+0435;i->U+0456;a->U+0430,True,leyla tahir gizi velizade,leyla tahir gizi velizade
+E000008,Sebine Musazade,Sebіne Мuѕаzade,1,True,i->U+0456;M->U+041C;s->U+0455;a->U+0430,False,sebine musazade,sebine musazade
+E000009,Vugar Novruz Oghlu Mollasoy,Vugar Novruz Oghlu Моllаѕоy,1,True,M->U+041C;o->U+043E;a->U+0430;s->U+0455;o->U+043E,False,vugar novruz oghlu mollasoy,vugar novruz oghlu mollasoy
+E000010,Shefeg Yagub Gizi Omerzade,Shеfеg Уagub Gіzi Oмerzаdе,1,True,e->U+0435;e->U+0435;Y->U+0423;i->U+0456;m->U+043C;a->U+0430;e->U+0435,False,shefeg yagub gizi omerzade,shefeg yagub gizi omerzade
+E000011,Elchin Hesen Oghlu Soltanov,Elсhin Нeѕеn Оgһlu Ѕоltanоv,1,True,c->U+0441;H->U+041D;s->U+0455;e->U+0435;O->U+041E;h->U+04BB;S->U+0405;o->U+043E;o->U+043E,True,elchin hesen oghlu soltanov,elchin hesen oghlu soltanov
+E000012,Murad Yashar Oghlu Shukursoy,Мurad Уаsһаr Oghlu Shukurѕоу,1,True,M->U+041C;Y->U+0423;a->U+0430;h->U+04BB;a->U+0430;s->U+0455;o->U+043E;y->U+0443,True,murad yashar oghlu shukursoy,murad yashar oghlu shukursoy
+E000013,Mubariz Tahir Oghlu Subhanov,Мubаrіz Таhir Оgһlu Subһanоv,1,True,M->U+041C;a->U+0430;i->U+0456;T->U+0422;a->U+0430;O->U+041E;h->U+04BB;h->U+04BB;o->U+043E,False,mubariz tahir oghlu subhanov,mubariz tahir oghlu subhanov
+E000014,Yegane Ramazan Gizi Yagublu,Yеgаnе Rамazаn Gizi Yаgublu,1,True,e->U+0435;a->U+0430;e->U+0435;a->U+0430;m->U+043C;a->U+0430;a->U+0430,False,yegane ramazan gizi yagublu,yegane ramazan gizi yagublu
+E000015,Konul Kenan Gizi Gulisoy,Коnul Кenаn Gizi Gulіѕоу,1,True,K->U+041A;o->U+043E;K->U+041A;a->U+0430;i->U+0456;s->U+0455;o->U+043E;y->U+0443,True,konul kenan gizi gulisoy,konul kenan gizi gulisoy
+E000016,Melek Hesen Gizi Jeferova,Melеk Heѕеn Gіzі Јеfеrova,1,True,e->U+0435;s->U+0455;e->U+0435;i->U+0456;i->U+0456;J->U+0408;e->U+0435;e->U+0435,False,melek hesen gizi jeferova,melek hesen gizi jeferova
+E000017,Khalig Omer Oghlu Penahov,Kһаlіg Omеr Oghlu Pеnaһov,1,True,h->U+04BB;a->U+0430;i->U+0456;e->U+0435;e->U+0435;h->U+04BB,False,khalig omer oghlu penahov,khalig omer oghlu penahov
+E000018,Ulduz Metal Korporasiya,Ulduz Меtаl Коrpоrаѕіya,1,True,M->U+041C;e->U+0435;a->U+0430;K->U+041A;o->U+043E;o->U+043E;a->U+0430;s->U+0455;i->U+0456,False,ulduz metal korporasiya,ulduz metal korporasiya
+E000019,Solmaz Kazimzade,Ѕolмaz Kаzimzаdе,1,True,S->U+0405;m->U+043C;a->U+0430;a->U+0430;e->U+0435,True,solmaz kazimzade,solmaz kazimzade
+E000020,Nigar Movsumova,Nigаr Моvѕuмоvа,1,True,a->U+0430;M->U+041C;o->U+043E;s->U+0455;m->U+043C;o->U+043E;a->U+0430,True,nigar movsumova,nigar movsumova
+E000021,Kemale Penahova,Kемаle Penаһоva,1,True,e->U+0435;m->U+043C;a->U+0430;a->U+0430;h->U+04BB;o->U+043E,False,kemale penahova,kemale penahova
+E000022,Shefeg Shukurova,Sһefеg Ѕһukurоvа,1,True,h->U+04BB;e->U+0435;S->U+0405;h->U+04BB;o->U+043E;a->U+0430,False,shefeg shukurova,shefeg shukurova
+E000023,Semed Vagif Oghlu Mejidzade,Ѕemed Vаgіf Oghlu Мејіdzadе,1,True,S->U+0405;a->U+0430;i->U+0456;M->U+041C;e->U+0435;j->U+0458;i->U+0456;e->U+0435,True,semed vagif oghlu mejidzade,semed vagif oghlu mejidzade
+E000024,Yegane Sefer Gizi Ulfetli,Yeganе Sefer Gіzi Ulfеtlі,1,True,e->U+0435;i->U+0456;e->U+0435;i->U+0456,True,yegane sefer gizi ulfetli,yegane sefer gizi ulfetli
+E000025,Mubariz Davudov,Mubаrіz Dаvudov,1,True,a->U+0430;i->U+0456;a->U+0430,False,mubariz davudov,mubariz davudov
+E000026,Javid Tahir Oghlu Chiragzade,Javid Таhir Оghlu Сhirаgzadе,1,True,T->U+0422;a->U+0430;O->U+041E;C->U+0421;a->U+0430;e->U+0435,True,javid tahir oghlu chiragzade,javid tahir oghlu chiragzade
+E000027,Ilgar Murad Oghlu Aslanov,Ilgar Murаd Ogһlu Аѕlanov,1,True,a->U+0430;h->U+04BB;A->U+0410;s->U+0455,False,ilgar murad oghlu aslanov,ilgar murad oghlu aslanov
+E000028,Mahmud Suleymanzade,Мaһmud Ѕulеумanzаde,1,True,M->U+041C;h->U+04BB;S->U+0405;e->U+0435;y->U+0443;m->U+043C;a->U+0430,False,mahmud suleymanzade,mahmud suleymanzade
+E000029,Nuray Tahir Gizi Gilinjova,Nurаy Taһіr Gіzі Gіlіnјоvа,1,True,a->U+0430;h->U+04BB;i->U+0456;i->U+0456;i->U+0456;i->U+0456;i->U+0456;j->U+0458;o->U+043E;a->U+0430,False,nuray tahir gizi gilinjova,nuray tahir gizi gilinjova
+E000030,Palıd Daşınmaz Holdinq,Рalıd Daşınmаz Ноldinq,1,True,P->U+0420;a->U+0430;H->U+041D;o->U+043E,False,palıd daşınmaz holdinq,palıd daşınmaz holdinq
+E000031,Aysel Isa Gizi Nebisoy,Aуsеl Іѕа Gіzi Nebisoу,1,True,y->U+0443;e->U+0435;I->U+0406;s->U+0455;a->U+0430;i->U+0456;y->U+0443,False,aysel isa gizi nebisoy,aysel isa gizi nebisoy
+E000032,Tofig Anar Oghlu Suleymanzade,Тofіg Аnar Oghlu Ѕulеyмаnzаde,1,True,T->U+0422;i->U+0456;A->U+0410;S->U+0405;e->U+0435;m->U+043C;a->U+0430;a->U+0430,False,tofig anar oghlu suleymanzade,tofig anar oghlu suleymanzade
+E000033,Kheyal Teymur Oghlu Yasharov,Kһеyal Тeyмur Оgһlu Yаѕhаrov,1,True,h->U+04BB;e->U+0435;T->U+0422;m->U+043C;O->U+041E;h->U+04BB;a->U+0430;s->U+0455;a->U+0430,False,kheyal teymur oghlu yasharov,kheyal teymur oghlu yasharov
+E000034,Leyla Chiragzade,Lеylа Сhіrаgzadе,1,True,e->U+0435;a->U+0430;C->U+0421;i->U+0456;a->U+0430;e->U+0435,True,leyla chiragzade,leyla chiragzade
+E000035,Jemile Davudzade,Јеmіlе Dаvudzаdе,1,True,J->U+0408;e->U+0435;i->U+0456;e->U+0435;a->U+0430;a->U+0430;e->U+0435,False,jemile davudzade,jemile davudzade
+E000036,Metanet Hesen Gizi Penahova,Меtanеt Неѕen Gizi Pеnaһovа,1,True,M->U+041C;e->U+0435;e->U+0435;H->U+041D;e->U+0435;s->U+0455;e->U+0435;h->U+04BB;a->U+0430,False,metanet hesen gizi penahova,metanet hesen gizi penahova
+E000037,Lamiye Nesib Gizi Musali,Lamiуe Nеѕіb Gіzі Muѕаli,1,True,y->U+0443;e->U+0435;s->U+0455;i->U+0456;i->U+0456;i->U+0456;s->U+0455;a->U+0430,False,lamiye nesib gizi musali,lamiye nesib gizi musali
+E000038,İpək Telekom Konsern,İрək Теlеkoм Коnѕern,1,True,p->U+0440;T->U+0422;e->U+0435;e->U+0435;m->U+043C;K->U+041A;o->U+043E;s->U+0455,False,i̇pək telekom konsern,i̇pək telekom konsern
+E000039,Nigar Aslan Gizi Gilinjova,Nіgаr Aѕlan Gizi Gilіnјоvа,1,True,i->U+0456;a->U+0430;s->U+0455;i->U+0456;j->U+0458;o->U+043E;a->U+0430,True,nigar aslan gizi gilinjova,nigar aslan gizi gilinjova
+E000040,Rubabe Sadigli,Rubаbе Ѕаdіglі,1,True,a->U+0430;e->U+0435;S->U+0405;a->U+0430;i->U+0456;i->U+0456,True,rubabe sadigli,rubabe sadigli
+E000041,Nuray Omer Gizi Huseynova,Nuray Омer Gizі Нuѕеуnovа,1,True,O->U+041E;m->U+043C;i->U+0456;H->U+041D;s->U+0455;e->U+0435;y->U+0443;a->U+0430,False,nuray omer gizi huseynova,nuray omer gizi huseynova
+E000042,Lale Novruz Gizi Zamanli,Lаlе Nоvruz Gizі Zаmаnlі,1,True,a->U+0430;e->U+0435;o->U+043E;i->U+0456;a->U+0430;a->U+0430;i->U+0456,False,lale novruz gizi zamanli,lale novruz gizi zamanli
+E000043,Seki Senaye Korporasiya,Ѕeкі Ѕenауе Korрorаѕіуa,1,True,S->U+0405;k->U+043A;i->U+0456;S->U+0405;a->U+0430;y->U+0443;e->U+0435;p->U+0440;a->U+0430;s->U+0455;i->U+0456;y->U+0443,True,seki senaye korporasiya,seki senaye korporasiya
+E000044,Gunel Serdarova,Gunel Serdarovа,1,True,a->U+0430,True,gunel serdarova,gunel serdarova
+E000045,Gulchin Novruz Gizi Davudsoy,Gulcһin Novruz Gіzі Dаvudѕoy,1,True,h->U+04BB;i->U+0456;i->U+0456;a->U+0430;s->U+0455,False,gulchin novruz gizi davudsoy,gulchin novruz gizi davudsoy
+E000046,Zehra Fuad Gizi Hajiyeva,Zeһra Fuad Gizі Наjіyеva,1,True,h->U+04BB;i->U+0456;H->U+041D;a->U+0430;i->U+0456;e->U+0435,False,zehra fuad gizi hajiyeva,zehra fuad gizi hajiyeva
+E000047,Elnur Tofig Oghlu Khanli,Elnur Тofig Ogһlu Kһаnlі,1,True,T->U+0422;h->U+04BB;h->U+04BB;a->U+0430;i->U+0456,True,elnur tofig oghlu khanli,elnur tofig oghlu khanli
+E000048,Ilgar Yagub Oghlu Suleymanli,Ilgаr Yаgub Оgһlu Ѕuleумanli,1,True,a->U+0430;a->U+0430;O->U+041E;h->U+04BB;S->U+0405;y->U+0443;m->U+043C,False,ilgar yagub oghlu suleymanli,ilgar yagub oghlu suleymanli
+E000049,Nigar Aslan Gizi Gayazade,Nіgаr Aѕlan Gizi Gауаzade,1,True,i->U+0456;a->U+0430;s->U+0455;a->U+0430;y->U+0443;a->U+0430,False,nigar aslan gizi gayazade,nigar aslan gizi gayazade

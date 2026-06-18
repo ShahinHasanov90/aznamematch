@@ -1,0 +1,51 @@
+canonical_id,entity_type,name_origin_group,canonical,gender,given,patronymic,family,family_root,patronymic_father,canonical_style,org_tokens,dob,id_number,family_variants,russified_patronymic
+E000000,person,national_zade,Fərid Mövsümzadə,m,Fərid,,Mövsümzadə,Mövsüm,,zade,,1956-08-12,2988447,Mövsümlü|li|national;Mövsümov|russified|assimilation,
+E000001,person,russified,Fidan Kənan qızı Bəyova,f,Fidan,Kənan qızı,Bəyova,Bəy,Kənan,russified,,,0296303,,Kənanovna
+E000002,person,russified,Rəna Ramazan qızı Məcidova,f,Rəna,Ramazan qızı,Məcidova,Məcid,Ramazan,russified,,,4984405,Məcidli|li|national,Ramazanovna
+E000003,person,national_zade,Şahin Anar oğlu Salmanzadə,m,Şahin,Anar oğlu,Salmanzadə,Salman,Anar,zade,,1952-04-18,7712503,Salmanov|russified|assimilation,Anaroviç
+E000004,org,organization,Odlar Korporasiya,,,,,,,,Odlar Korporasiya,,0898220,,
+E000005,person,russified,Afaq Kənan qızı Quliyeva,f,Afaq,Kənan qızı,Quliyeva,Quli,Kənan,russified,,,,,Kənanovna
+E000006,person,russified,İlqar Hüseyn oğlu Sərdarov,m,İlqar,Hüseyn oğlu,Sərdarov,Sərdar,Hüseyn,russified,,2000-11-13,7001237,,Hüseynoviç
+E000007,person,national_zade,Leyla Tahir qızı Vəlizadə,f,Leyla,Tahir qızı,Vəlizadə,Vəli,Tahir,zade,,1962-11-21,9525344,Vəlili|li|national;Vəliyeva|russified|assimilation,Tahirovna
+E000008,person,national_zade,Səbinə Musazadə,f,Səbinə,,Musazadə,Musa,,zade,,1999-01-09,,,
+E000009,person,national_soy,Vüqar Novruz oğlu Mollasoy,m,Vüqar,Novruz oğlu,Mollasoy,Molla,Novruz,soy,,1970-01-08,7100126,,Novruzoviç
+E000010,person,national_zade,Şəfəq Yaqub qızı Ömərzadə,f,Şəfəq,Yaqub qızı,Ömərzadə,Ömər,Yaqub,zade,,1992-08-07,5416379,,Yaqubovna
+E000011,person,russified,Elçin Həsən oğlu Soltanov,m,Elçin,Həsən oğlu,Soltanov,Soltan,Həsən,russified,,1957-07-11,,Soltanlı|li|national,Həsənoviç
+E000012,person,national_soy,Murad Yaşar oğlu Şükürsoy,m,Murad,Yaşar oğlu,Şükürsoy,Şükür,Yaşar,soy,,,6050935,Şükürlü|li|national,Yaşaroviç
+E000013,person,russified,Mübariz Tahir oğlu Sübhanov,m,Mübariz,Tahir oğlu,Sübhanov,Sübhan,Tahir,russified,,1988-03-08,7108571,,Tahiroviç
+E000014,person,national_li,Yeganə Ramazan qızı Yaqublu,f,Yeganə,Ramazan qızı,Yaqublu,Yaqub,Ramazan,li,,1942-06-06,3879120,,Ramazanovna
+E000015,person,national_soy,Könül Kənan qızı Qulisoy,f,Könül,Kənan qızı,Qulisoy,Quli,Kənan,soy,,1976-08-15,6705541,Qulili|li|national;Quliyeva|russified|assimilation,Kənanovna
+E000016,person,russified,Mələk Həsən qızı Cəfərova,f,Mələk,Həsən qızı,Cəfərova,Cəfər,Həsən,russified,,1969-09-04,3196954,,Həsənovna
+E000017,person,russified,Xaliq Ömər oğlu Pənahov,m,Xaliq,Ömər oğlu,Pənahov,Pənah,Ömər,russified,,2002-01-01,0225775,,Öməroviç
+E000018,org,organization,Ulduz Metal Korporasiya,,,,,,,,Ulduz Metal Korporasiya,,,,
+E000019,person,national_zade,Solmaz Kazımzadə,f,Solmaz,,Kazımzadə,Kazım,,zade,,1999-01-10,4673577,Kazımsoy|soy|national,
+E000020,person,russified,Nigar Mövsümova,f,Nigar,,Mövsümova,Mövsüm,,russified,,1976-02-19,3808246,Mövsümsoy|soy|national,
+E000021,person,russified,Kəmalə Pənahova,f,Kəmalə,,Pənahova,Pənah,,russified,,,,,
+E000022,person,russified,Şəfəq Şükürova,f,Şəfəq,,Şükürova,Şükür,,russified,,,,,
+E000023,person,national_zade,Səməd Vaqif oğlu Məcidzadə,m,Səməd,Vaqif oğlu,Məcidzadə,Məcid,Vaqif,zade,,2002-09-04,,Məcidsoy|soy|national,Vaqifoviç
+E000024,person,national_li,Yeganə Səfər qızı Ülfətli,f,Yeganə,Səfər qızı,Ülfətli,Ülfət,Səfər,li,,,3732760,Ülfətzadə|zade|national,Səfərovna
+E000025,person,russified,Mübariz Davudov,m,Mübariz,,Davudov,Davud,,russified,,,,,
+E000026,person,national_zade,Cavid Tahir oğlu Çıraqzadə,m,Cavid,Tahir oğlu,Çıraqzadə,Çıraq,Tahir,zade,,,,Çıraqsoy|soy|national,Tahiroviç
+E000027,person,russified,İlqar Murad oğlu Aslanov,m,İlqar,Murad oğlu,Aslanov,Aslan,Murad,russified,,1978-01-03,0400115,,Muradoviç
+E000028,person,national_zade,Mahmud Süleymanzadə,m,Mahmud,,Süleymanzadə,Süleyman,,zade,,1984-03-12,1820175,Süleymanov|russified|assimilation,
+E000029,person,russified,Nuray Tahir qızı Qılıncova,f,Nuray,Tahir qızı,Qılıncova,Qılınc,Tahir,russified,,,6750756,,Tahirovna
+E000030,org,organization,Palıd Daşınmaz Holdinq,,,,,,,,Palıd Daşınmaz Holdinq,,2570819,,
+E000031,person,national_soy,Aysel İsa qızı Nəbisoy,f,Aysel,İsa qızı,Nəbisoy,Nəbi,İsa,soy,,1966-09-19,,,İsaovna
+E000032,person,national_zade,Tofiq Anar oğlu Süleymanzadə,m,Tofiq,Anar oğlu,Süleymanzadə,Süleyman,Anar,zade,,1981-05-13,,Süleymanov|russified|assimilation,Anaroviç
+E000033,person,russified,Xəyal Teymur oğlu Yaşarov,m,Xəyal,Teymur oğlu,Yaşarov,Yaşar,Teymur,russified,,1945-07-19,,,Teymuroviç
+E000034,person,national_zade,Leyla Çıraqzadə,f,Leyla,,Çıraqzadə,Çıraq,,zade,,1965-08-07,2906942,Çıraqsoy|soy|national,
+E000035,person,national_zade,Cəmilə Davudzadə,f,Cəmilə,,Davudzadə,Davud,,zade,,2006-03-12,4028793,Davudova|russified|assimilation,
+E000036,person,russified,Mətanət Həsən qızı Pənahova,f,Mətanət,Həsən qızı,Pənahova,Pənah,Həsən,russified,,1973-02-11,6035316,,Həsənovna
+E000037,person,national_li,Lamiyə Nəsib qızı Musalı,f,Lamiyə,Nəsib qızı,Musalı,Musa,Nəsib,li,,1996-01-03,,,Nəsibovna
+E000038,org,organization,İpək Telekom Konsern,,,,,,,,İpək Telekom Konsern,,6383959,,
+E000039,person,russified,Nigar Aslan qızı Qılıncova,f,Nigar,Aslan qızı,Qılıncova,Qılınc,Aslan,russified,,,5277519,Qılınclı|li|national,Aslanovna
+E000040,person,national_li,Rübabə Sadıqlı,f,Rübabə,,Sadıqlı,Sadıq,,li,,,4825565,Sadıqzadə|zade|national;Sadıqova|russified|assimilation,
+E000041,person,russified,Nuray Ömər qızı Hüseynova,f,Nuray,Ömər qızı,Hüseynova,Hüseyn,Ömər,russified,,1987-02-12,5099006,,Ömərovna
+E000042,person,national_li,Lalə Novruz qızı Zamanlı,f,Lalə,Novruz qızı,Zamanlı,Zaman,Novruz,li,,1951-05-23,,Zamanova|russified|assimilation,Novruzovna
+E000043,org,organization,Şəki Sənaye Korporasiya,,,,,,,,Şəki Sənaye Korporasiya,,4880834,,
+E000044,person,russified,Günel Sərdarova,f,Günel,,Sərdarova,Sərdar,,russified,,1947-01-13,,Sərdarlı|li|national,
+E000045,person,national_soy,Gülçin Novruz qızı Davudsoy,f,Gülçin,Novruz qızı,Davudsoy,Davud,Novruz,soy,,,6238557,,Novruzovna
+E000046,person,russified,Zəhra Fuad qızı Hacıyeva,f,Zəhra,Fuad qızı,Hacıyeva,Hacı,Fuad,russified,,1948-04-26,8023354,,Fuadovna
+E000047,person,national_li,Elnur Tofiq oğlu Xanlı,m,Elnur,Tofiq oğlu,Xanlı,Xan,Tofiq,li,,1940-05-27,4668270,Xansoy|soy|national;Xanov|russified|assimilation,Tofiqoviç
+E000048,person,national_li,İlqar Yaqub oğlu Süleymanlı,m,İlqar,Yaqub oğlu,Süleymanlı,Süleyman,Yaqub,li,,,7794396,,Yaquboviç
+E000049,person,national_zade,Nigar Aslan qızı Qayazadə,f,Nigar,Aslan qızı,Qayazadə,Qaya,Aslan,zade,,1956-05-07,9698130,Qayayeva|russified|assimilation,Aslanovna

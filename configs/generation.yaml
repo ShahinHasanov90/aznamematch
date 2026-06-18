@@ -53,6 +53,7 @@ transliteration:
 # ---------------------------------------------------------------------------
 noise:
   enabled: true
+  p_surface_corrupted: 0.5  # chance a clean surface form also gets a corrupted twin
   p_corrupt_token: 0.35   # chance a given token receives any corruption
   rates:                  # conditional rates given a token is corrupted
     char_edit: 0.30       # insert / delete / substitute / transpose one char

@@ -1,0 +1,51 @@
+pair_id,id1,id2,surface1,surface2,label,script_pair,hardness,hard_negative_type,scripts,standards,corruption_types,suffix_transforms,name_origin_groups,is_homoglyph
+N000513,E000057,E000171,Odlar Siorta Holding,Zumrud Yagub Gyzy Zamanly,0,same,easy,none,latn-translit,BGN_PCGN;ad_hoc,,national;none,organization;russified,False
+HON00345,HON00345a,HON00345b,Vüqar Sadıqov,Oqtay Södıqov,0,same,hard,one_edit,latn-az,none,,none,hardneg_one_edit,False
+HON00317,HON00317a,HON00317b,Hüseyn Vəliyev,Şahin Vəliev,0,same,hard,one_edit,latn-az,none,,none,hardneg_one_edit,False
+P001378,E000459,E000459,Мәләк Давудсој,Malak Davudsoĭ,1,RU-EN,easy,none,cyrl;latn-translit,ALA_LC;none,,none,national_soy,False
+N000589,E000465,E000488,fuad nabili,Меһман Новруз ғолу Сәфәров,0,RU-EN,easy,none,cyrl;latn-translit,ALA_LC;none,case;char_edit,assimilation;none,national_li;national_zade,False
+N000133,E000334,E000462,Asaf Iasharov,yAygun Alai,0,same,easy,none,latn-translit,ICAO;ad_hoc,char_edit,none,national_li;russified,False
+P001130,E000376,E000376,Fidan Safatr Gyzy Sphukursoĭ,Fidran Gyzy Safar Shukurzada,1,same,easy,none,latn-translit,ALA_LC;ICAO,char_edit;token_reorder,national;none,national_soy,False
+HSU00383,HSU00383a,HSU00383b,Ramil Vəliyev,Xəyal Vəliyev,0,same,hard,surname_collision,latn-az,none,,none,hardneg_surname,False
+P001000,E000333,E000333,Zehra Jamal Qizi Subhanova,Загра Джамал Гызы Субганова,1,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,,none,russified,False
+P000292,E000097,E000097,Nurai Chyragzada Gyzy Zeinal,Нруај Зејнал гызы Чырагсој,1,RU-EN,easy,none,cyrl;latn-translit,ICAO;none,char_edit;token_reorder,national;none,national_soy,False
+HON00204,HON00204a,HON00204b,Zaur Mirzəyev,Səməd Mirzəyevg,0,same,hard,one_edit,latn-az,none,,none,hardneg_one_edit,False
+HSU00623,HSU00623a,HSU00623b,Namiq Bayramov,Rüstəm Bayramov,0,same,hard,surname_collision,latn-az,none,,none,hardneg_surname,False
+P001475,E000491,E000491,Könül Vəliyeva,Konyl Valili,1,AZ-EN,easy,none,latn-az;latn-translit,ALA_LC;none,char_edit,national;none,russified,False
+P001456,E000485,E000485,Yusif Karim Oglu Aslanly`,Јусиф Кәримович Асланзадә,1,RU-EN,easy,none,cyrl;latn-translit,GOST;none,,national;patronymic,national_zade,False
+HSU00553,HSU00553a,HSU00553b,Oqtay Yaşarov,Qorxmaz Yaşarov,0,same,hard,surname_collision,latn-az,none,,none,hardneg_surname,False
+P000418,E000139,E000139,Yusif Tamazan Oghlu Abbasli,Јусиф Рамазан оғлу Аббасов,1,RU-EN,easy,none,cyrl;latn-translit,BGN_PCGN;none,keyboard,assimilation;none,national_li,False
+HTO00038,HTO00038a,HTO00038b,Bəxtiyar Elgün oğlu,Elgün Bəxtiyar oğlu,0,same,hard,token_swap,latn-az,none,,none,hardneg_token_swap,False
+N000373,E000093,E000232,Əhməd Ömər oğlu Süleymanov,əİbrahim Qılmıncov,0,same,easy,none,latn-az,none,char_edit;patronymic_drop,none;patronymic,russified,False
+P001420,E000473,E000473,Serned-Novruz Ohlu Shirinzade,Səməd Şirunzadə.,1,AZ-EN,easy,none,latn-az;latn-translit,BGN_PCGN;none,char_edit;diacritic_loss;keyboard;ocr;patronymic_drop;whitespace_punct,none;patronymic,national_zade,False
+P000439,E000146,E000146,Mingəçevir Korporasiya,Mingachevir Korporasija,1,AZ-EN,easy,none,latn-az;latn-translit,ad_hoc;none,,none,organization,False
+N000559,E000425,E000126,turkan djafer qizi naiyeva,Semed Isa Olu Huseynov,0,same,easy,none,latn-translit,ad_hoc,case,none,russified,False
+P000496,E000165,E000165,Khadidje Isayeva,Исаева Хадиджа,1,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,token_reorder,none,russified,False
+N000434,E000369,E000224,Lankaran Tikinti Gsj,Gumay Gurbanovna Davudsoy,0,same,easy,none,latn-translit,ALA_LC;BGN_PCGN,,none;patronymic,national_soy;organization,False
+P000252,E000083,E000083,Ҝүлнар Анар гызы Рәһимова,Gulnar Aar izi Rahimova,1,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,char_edit,none,russified,False
+N000672,E000115,E000405,Мәрмәр ММҸ,Guenesh Senaye Konsern,0,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,,none,organization,False
+P000272,E000090,E000090,Орхан Насибзада,Orxan Nasibov,1,RU-EN,easy,none,cyrl;latn-translit,GOST;none,,assimilation;none,national_zade,False
+HON00640,HON00640a,HON00640b,Əli Rəsulov,İlqar Rsulov,0,same,hard,one_edit,latn-az,none,,none,hardneg_one_edit,False
+HGE00007,HGE00007a,HGE00007b,Xaliq Dadaşov,Hüseyn Xaliq oğlu Dadaşov,0,same,hard,generation_collision,latn-az,none,,none,hardneg_generation,False
+N000390,E000150,E000163,Gunel Yaqub Gizi Salmansoy,9uba Logistika Korporasiya,0,AZ-EN,easy,none,latn-az;latn-translit,ad_hoc;none,ocr,national;none,organization;russified,False
+P001185,E000394,E000394,Kür QSC Logistika,Kuer Logistika Gsj,1,AZ-EN,easy,none,latn-az;latn-translit,ad_hoc;none,token_reorder,none,organization,False
+P001298,E000432,E000432,Perviz Vali Olu Letifov,Parviz Valiovich Letifov,1,same,easy,none,latn-translit,ad_hoc,,none;patronymic,russified,False
+HON00605,HON00605a,HON00605b,Kamran Çıraqov,Zeynal Çırqov,0,same,hard,one_edit,latn-az,none,,none,hardneg_one_edit,False
+N000109,E000139,E000096,Yusif Ramazanoviç Abbaslı,Mahmud Isaovich Beyzade,0,AZ-EN,easy,none,latn-az;latn-translit,BGN_PCGN;none,,patronymic,national_li;national_zade,False
+HGE00368,HGE00368a,HGE00368b,Murad Camalov,Əli Murad oğlu Camalov,0,same,hard,generation_collision,latn-az,none,,none,hardneg_generation,False
+P001233,E000410,E000410,Fidan Abbasovna Ulfatli,Fidan Abbas qızı Ülfətli,1,AZ-EN,easy,none,latn-az;latn-translit,ALA_LC;none,,none;patronymic,national_li,False
+HGE00572,HGE00572a,HGE00572b,Mehman Hüseynov,Əhməd Mehman oğlu Hüseynov,0,same,hard,generation_collision,latn-az,none,,none,hardneg_generation,False
+HSU00044,HSU00044a,HSU00044b,Zeynal Salmanov,Zaur Salmanov,0,same,hard,surname_collision,latn-az,none,,none,hardneg_surname,False
+N000189,E000425,E000057,Nagiyeva Jafar Gizi Trkan,Odlat Wighorta Holding,0,same,easy,none,latn-translit,ALA_LC;BGN_PCGN,char_edit;keyboard;token_reorder,none,organization;russified,False
+P000875,E000291,E000291,Zarife Mollali,Зарифа Моллалы,1,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,,national,national_zade,False
+HSU00484,HSU00484a,HSU00484b,Mübariz Musayev,Xaliq Musayev,0,same,hard,surname_collision,latn-az,none,,none,hardneg_surname,False
+P001408,E000469,E000469,Babak Sighorta Korporasiya,Бабә Сығорта Корпорасија,1,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,char_edit,none,organization,False
+P001210,E000403,E000403,Sheki Tijarat Holdinq,Şəku Ticarət Holdinq,1,AZ-EN,easy,none,latn-az;latn-translit,ad_hoc;none,keyboard,none,organization,False
+P001490,E000496,E000496,Nigar Teymur qızı Şirinova,Нигар Теймуровна Ш.,1,AZ-RU,easy,none,cyrl;latn-az,none,abbreviation,assimilation;patronymic,national_soy,False
+P000150,E000049,E000049,Ниҝр Аслан0вна Гајазадә,Ниҝар Аслан гызы Гајајева,1,same,easy,none,cyrl,none,char_edit;ocr,assimilation;patronymic,national_zade,False
+P000826,E000275,E000275,Лалә Сүлејмансој,Lala Sueleymansoy,1,RU-EN,easy,none,cyrl;latn-translit,ad_hoc;none,,none,national_soy,False
+HTO00728,HTO00728a,HTO00728b,Oqtay Kamran oğlu,Kamran Oqtay oğlu,0,same,hard,token_swap,latn-az,none,,none,hardneg_token_swap,False
+P000202,E000067,E000067,Sanan Bayram Oghlu Musayev,Senan Bayram Oghlu Musayev,1,same,easy,none,latn-translit,BGN_PCGN;ad_hoc,,none,russified,False
+P000932,E000310,E000310,Gylyndzhly Turkan,Türkan Gilincli.,1,AZ-EN,easy,none,latn-az;latn-translit,ICAO;none,diacritic_loss;token_reorder;whitespace_punct,none,national_li,False
+N000640,E000461,E000189,Asaf Hadjizdae,Mübariz Sadıq oğlu Şükürlü,0,AZ-EN,easy,none,latn-az;latn-translit,ad_hoc;none,char_edit,national,national_li;national_zade,False
+HGE00271,HGE00271a,HGE00271b,Fuad Vahidov,Xaliq Fuad oğlu Vahidov,0,same,hard,generation_collision,latn-az,none,,none,hardneg_generation,False
