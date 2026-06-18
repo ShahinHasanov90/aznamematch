@@ -7,6 +7,12 @@
 Heydər Əliyev
 İlham Əliyev
 Mehriban Əliyeva
+Mehriban Aliyeva
 Vladimir Putin
 Heydar Aliyev
 Ilham Aliyev
+# Defense-in-depth: generable-space names a pre-publish audit flagged as coincidental
+# common-component overlaps with public figures (none appear in the frozen v1.0 dataset).
+Kamran Əliyev
+Əli Həsənov
+Aygün Kazımova

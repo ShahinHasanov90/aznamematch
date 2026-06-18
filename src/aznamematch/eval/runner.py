@@ -74,8 +74,9 @@ def run_benchmark(config_path: str | None = None) -> dict[str, Any]:
     # opposite sides are dropped; synthetic hard negatives (unique ids per pair) get a coin.
     test_frac = float(get(cfg, "split.test_fraction", 0.6))
     ent_rng = np.random.default_rng(seed)
-    real_ids = sorted({i for i in pd.concat([df["id1"], df["id2"]]) if str(i).startswith("E")})
-    is_test_entity = {eid: bool(ent_rng.random() < test_frac) for eid in real_ids}
+    canonical_entity_ids = sorted(
+        {i for i in pd.concat([df["id1"], df["id2"]]) if str(i).startswith("E")})
+    is_test_entity = {eid: bool(ent_rng.random() < test_frac) for eid in canonical_entity_ids}
     hn_rng = np.random.default_rng(seed + 1)
 
     split: list[str] = []
