@@ -68,6 +68,14 @@ def test_no_trivial_exact_string_positives(small):
     assert all(p.surface1 != p.surface2 for p in pairs if p.label == 1)
 
 
+def test_no_duplicate_pairs(small):
+    # Exact (surface1, surface2, label) duplicates are removed so a pair can't straddle the
+    # entity-disjoint eval split.
+    _, _, _, pairs = small
+    keys = [(p.surface1, p.surface2, p.label) for p in pairs]
+    assert len(keys) == len(set(keys))
+
+
 def test_metadata_complete(small):
     _, _, _, pairs = small
     for p in pairs:
