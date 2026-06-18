@@ -1,0 +1,44 @@
+# Father given-name roots used to build patronymics (invented bank). The patronymic is
+# formed in suffix_matrix.py: AZ adds "oğlu" (son) / "qızı" (daughter); the Russified style
+# adds -ovich / -ovna. These are male given-name roots (the father's name).
+
+Əli
+Vaqif
+Murad
+Kənan
+Rəşad
+Cəfər
+Hüseyn
+Məmməd
+Kərim
+Səfər
+Vəli
+Abbas
+Həsən
+Camal
+Rəhim
+Sadıq
+Salman
+Bayram
+Novruz
+Qurban
+Aslan
+Tahir
+Yaşar
+Zaman
+Ömər
+İsa
+Musa
+Yaqub
+Süleyman
+Xəlil
+Teymur
+Fuad
+Anar
+Şahin
+İbrahim
+Ramazan
+Nəsib
+Tofiq
+Zeynal
+Qadir

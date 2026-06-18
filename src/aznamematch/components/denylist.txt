@@ -1,0 +1,12 @@
+# Denylist of well-known real full names. If a generated canonical full name folds (casefold
+# + diacritic strip + whitespace normalize) to one of these, the generator re-draws. This is
+# a GUARD against accidentally emitting a real public figure, not a guarantee of
+# exhaustiveness (documented as a limitation in the README). One full name per line.
+# Comparison is fold-insensitive, so list either script/spelling.
+
+Heydər Əliyev
+İlham Əliyev
+Mehriban Əliyeva
+Vladimir Putin
+Heydar Aliyev
+Ilham Aliyev
