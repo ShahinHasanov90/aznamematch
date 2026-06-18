@@ -1,0 +1,100 @@
+# AzNameMatch — synthetic data generation config.
+# Same seed -> identical dataset. All knobs for Phases 1-4 live here.
+
+# Master seed. Every stage derives a child SeedSequence from this (see
+# docs/rules/seeding.md). Change it to produce a different but equally-valid dataset.
+seed: 20260618
+
+# ---------------------------------------------------------------------------
+# Phase 1 — canonical identities
+# ---------------------------------------------------------------------------
+identities:
+  count: 500              # number of canonical entities
+  org_fraction: 0.15      # share that are organizations (rest are persons)
+  patronymic_fraction: 0.7  # share of persons that carry a patronymic
+  dob:
+    fraction: 0.8         # share of persons with a synthetic DOB
+    min_year: 1940
+    max_year: 2007
+  id_number:
+    fraction: 0.6         # share of identities with a synthetic ID number
+    length: 7             # digits
+
+# ---------------------------------------------------------------------------
+# Phase 1 — post-Soviet suffix transition matrix (modeling assumption)
+# Probabilities a canonical root is ALSO rendered under an alternative era/style,
+# producing same-entity variants. See docs/suffix_matrix.md.
+# ---------------------------------------------------------------------------
+suffix_matrix:
+  enabled: true
+  p_national_alt: 0.5     # e.g. Əli -> Əlizadə / Əlisoy
+  p_russified: 0.6        # e.g. Əli -> Aliyev (-ov/-ev), Cyrillic Алиев
+  p_patronymic_style: 0.5 # AZ "X oğlu" <-> RU "Xovich"
+
+# ---------------------------------------------------------------------------
+# Phase 2 — cross-script transliteration standards (each separately toggleable)
+# ---------------------------------------------------------------------------
+transliteration:
+  az_cyrl:                # AZ Latin <-> Cyrillic
+    BGN_PCGN: true
+    ALA_LC: true
+    ISO9: true
+  ru_latn:                # RU Cyrillic -> Latin
+    ICAO: true
+    GOST: true
+    BGN_PCGN: true
+    ALA_LC: true
+  adhoc:
+    enabled: true
+    max_variants: 3       # cap ad-hoc standardless variants per name
+
+# ---------------------------------------------------------------------------
+# Phase 3 — intra-script corruption (FEBRL/GeCo paradigm), per-token rates
+# ---------------------------------------------------------------------------
+noise:
+  enabled: true
+  p_corrupt_token: 0.35   # chance a given token receives any corruption
+  rates:                  # conditional rates given a token is corrupted
+    char_edit: 0.30       # insert / delete / substitute / transpose one char
+    ocr: 0.10             # OCR-confusion lookup substitution
+    phonetic: 0.10        # phonetic-confusion lookup substitution
+    keyboard: 0.15        # AZ keyboard-adjacency typo
+    diacritic_loss: 0.25  # ə->e, ş->s, ç->c, ğ->g, ...
+    abbreviation: 0.05    # token -> initial
+  record_level:
+    p_token_reorder: 0.10 # swap token order
+    p_patronymic_drop: 0.15
+    p_case_change: 0.10
+    p_punct_ws: 0.10
+
+# ---------------------------------------------------------------------------
+# Phase 3b — adversarial homoglyph layer (separate threat model, frozen set)
+# ---------------------------------------------------------------------------
+homoglyph:
+  enabled: true
+  n_identities: 150       # subset of identities to build homoglyph attacks from
+  p_char_swap: 0.6        # per eligible Latin char, chance of Cyrillic-confusable swap
+  p_diacritic_strip: 0.5  # also strip AZ diacritics on the attacked form
+  version: v1
+
+# ---------------------------------------------------------------------------
+# Phase 4 — labeled pair construction
+# ---------------------------------------------------------------------------
+pairs:
+  positives_per_identity: 3   # cross-script / corruption / suffix-transition positives
+  neg_per_pos: 1.0            # negatives : positives ratio
+  hard_negative_fraction: 0.5 # share of negatives that are HARD
+  hard_negative_mix:          # relative weights among hard-negative types
+    token_swap: 1.0
+    generation_collision: 1.0
+    surname_collision: 1.0
+    one_edit: 1.0
+
+# ---------------------------------------------------------------------------
+# Output paths
+# ---------------------------------------------------------------------------
+output:
+  full_dir: data/full           # full parquet (NOT committed; regenerable)
+  sample_dir: data/sample       # tiny committed CSV sample
+  sample_rows: 50               # rows per committed sample CSV
+  adversarial_dir: data/adversarial

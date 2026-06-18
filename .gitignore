@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual env (managed by uv)
+.venv/
+venv/
+
+# uv
+.uv/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Model weights cache (sentence-transformers / HF) — never committed
+.cache/
+*.safetensors
+*.bin
+
+# OS
+.DS_Store
+
+# Large generated data: the FULL labeled-pair parquet is regenerable from a seed,
+# so it is NOT committed. The tiny committed sample (data/sample/) and the frozen
+# adversarial set (data/adversarial/) ARE committed and are force-added below.
+data/full/
+results/run_*/
+
+# Allow the committed inspectable artifacts despite the rules above.
+!data/sample/
+!data/adversarial/
