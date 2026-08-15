@@ -46,7 +46,9 @@ entity with the test set). Reproduce with `scripts/reproduce.sh`.
 
 Full tables (threshold-sensitivity, fairness gap, cross-standard robustness, per-script-cell
 F1, error-by-root-cause, expected-cost ranking, latency) and plots are in
-[`results/`](results/SUMMARY.md).
+[`results/`](results/SUMMARY.md). The narrative walkthrough of what those numbers mean — the
+per-cell paradox, the 445-vs-34 hard-negative column, and the three findings — is in
+**[`docs/REPORT.md`](docs/REPORT.md)**.
 
 **What the run shows** (the dataset is deliberately hard: 50% hard negatives, cross-script
 positives):
